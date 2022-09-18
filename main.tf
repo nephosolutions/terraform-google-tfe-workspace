@@ -12,18 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-data "google_project" "project" {
-  project_id = var.google_project_id
-}
-
-data "tfe_organization" "organization" {
-  name = var.tfe_organization_name
-}
-
 module "tfe_workspace_sa" {
   source = "./modules/service-account"
 
-  google_project_id                  = data.google_project.project.project_id
+  google_project_id                  = var.google_project_id
   tfe_workspace_id                   = tfe_workspace.workspace.id
   tfe_workspace_sa_key_admins        = var.tfe_workspace_sa_key_admins
   tfe_workspace_sa_key_rotation_days = var.tfe_workspace_sa_key_rotation_days
@@ -49,7 +41,7 @@ resource "tfe_variable" "google_project_id" {
   category     = "terraform"
   description  = "The Google Cloud Platform project ID"
   key          = "google_project_id"
-  value        = data.google_project.project.project_id
+  value        = var.google_project_id
   workspace_id = tfe_workspace.workspace.id
 }
 
@@ -57,7 +49,7 @@ resource "tfe_variable" "tfe_organization" {
   category     = "terraform"
   description  = "The name of the organization."
   key          = "tfe_organization"
-  value        = data.tfe_organization.organization.name
+  value        = var.tfe_organization_name
   workspace_id = tfe_workspace.workspace.id
 }
 
@@ -95,7 +87,7 @@ resource "tfe_workspace" "workspace" {
   file_triggers_enabled         = var.file_triggers_enabled
   global_remote_state           = var.global_remote_state
   name                          = var.name
-  organization                  = data.tfe_organization.organization.name
+  organization                  = var.tfe_organization_name
   queue_all_runs                = var.queue_all_runs
   remote_state_consumer_ids     = var.remote_state_consumer_ids
   speculative_enabled           = var.speculative_enabled

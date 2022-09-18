@@ -34,7 +34,6 @@ module "tfe-workspace" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.34.0 |
 | <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.36.1 |
 
 ## Modules
@@ -55,8 +54,6 @@ module "tfe-workspace" {
 | [tfe_variable.tfe_workspace_sa](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_variable.tfe_workspace_sa_key](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_workspace.workspace](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
-| [google_project.project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/project) | data source |
-| [tfe_organization.organization](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/organization) | data source |
 
 ## Inputs
 
