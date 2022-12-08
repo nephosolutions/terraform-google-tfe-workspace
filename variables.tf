@@ -90,6 +90,12 @@ variable "remote_state_consumer_ids" {
   default     = []
 }
 
+variable "service_accounts_to_impersonate" {
+  description = "A list of service accounts which the Terraform workspace SA can impersonate."
+  type        = list(string)
+  default     = []
+}
+
 variable "speculative_enabled" {
   description = "Whether this workspace allows speculative plans.  Setting this to `false` prevents Terraform Cloud or the Terraform Enterprise instance from running plans on pull requests, which can improve security if the VCS repository is public or includes untrusted contributors."
   type        = bool

@@ -20,6 +20,13 @@ module "tfe_workspace_sa" {
   tfe_workspace_sa_key_rotation_days = var.tfe_workspace_sa_key_rotation_days
 }
 
+module "service_account_impersonation" {
+  source   = "./modules/service-account-impersonation"
+  for_each = toset(var.service_accounts_to_impersonate)
+
+  service_account_id = each.key
+  tfe_workspace_sa   = module.tfe_workspace_sa.tfe_workspace_sa
+}
 resource "tfe_variable" "google_default_region" {
   category     = "terraform"
   description  = "The region used by default to create new resources"

@@ -5,19 +5,16 @@ This module provisions a Terraform Cloud workspace, a set of two Google service 
 A Terraform Workspace service account is used to authenticate the Terraform Cloud workspace to the Google APIs.
 The Google service account key for that account is rotated every 30 days.
 
-The workspace service account has only permissions granted which allows it to impersonate its corresponding runner.
-
-A Terrafrom Runner service account is foreseen to get the necessary permissions on the Google Cloud project resources
-granted. This service account does not have a service account key and must be impersonated.
+The workspace service account has only permissions granted which allows it to impersonate other service accounts.
 
 ## Usage
 
 ```hcl
 module "tfe-workspace" {
   source  = "nephosolutions/tfe-workspace/google"
-  version = "1.0.0"
+  version = "2.0.0"
 
-  # insert required variables here
+  # insert required variables.tf here
 }
 ```
 
@@ -34,12 +31,13 @@ module "tfe-workspace" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.36.1 |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.40.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_service_account_impersonation"></a> [service\_account\_impersonation](#module\_service\_account\_impersonation) | ./modules/service-account-impersonation | n/a |
 | <a name="module_tfe_workspace_sa"></a> [tfe\_workspace\_sa](#module\_tfe\_workspace\_sa) | ./modules/service-account | n/a |
 
 ## Resources
@@ -71,6 +69,7 @@ module "tfe-workspace" {
 | <a name="input_name"></a> [name](#input\_name) | Name of the workspace. | `string` | n/a | yes |
 | <a name="input_queue_all_runs"></a> [queue\_all\_runs](#input\_queue\_all\_runs) | Whether the workspace should start automatically performing runs immediately after its creation. | `bool` | `true` | no |
 | <a name="input_remote_state_consumer_ids"></a> [remote\_state\_consumer\_ids](#input\_remote\_state\_consumer\_ids) | The set of workspace IDs set as explicit remote state consumers for the given workspace. | `list(string)` | `[]` | no |
+| <a name="input_service_accounts_to_impersonate"></a> [service\_accounts\_to\_impersonate](#input\_service\_accounts\_to\_impersonate) | A list of service accounts which the Terraform workspace SA can impersonate. | `list(string)` | `[]` | no |
 | <a name="input_speculative_enabled"></a> [speculative\_enabled](#input\_speculative\_enabled) | Whether this workspace allows speculative plans.  Setting this to `false` prevents Terraform Cloud or the Terraform Enterprise instance from running plans on pull requests, which can improve security if the VCS repository is public or includes untrusted contributors. | `bool` | `true` | no |
 | <a name="input_ssh_key_id"></a> [ssh\_key\_id](#input\_ssh\_key\_id) | The ID of an SSH key to assign to the workspace. | `string` | `null` | no |
 | <a name="input_structured_run_output_enabled"></a> [structured\_run\_output\_enabled](#input\_structured\_run\_output\_enabled) | Whether this workspace should show output from Terraform runs using the enhanced UI when available. Setting this to `false` ensures that all runs in this workspace will display their output as text logs. | `bool` | `true` | no |

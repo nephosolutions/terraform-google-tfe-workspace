@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.1.0] - 2022-12-08
+
+Grant Terraform workspace service account permission to impersonate other service accounts.
+
 ## [2.0.0] - 2022-12-08
 
 Remove `tfe_runner` service account.
@@ -16,7 +20,8 @@ Fix violation of dependency injection principle
 
 Initial release
 
-[Unreleased]: https://github.com/nephosolutions/terraform-google-tfe-workspace/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/nephosolutions/terraform-google-tfe-workspace/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/nephosolutions/terraform-google-tfe-workspace/releases/tag/v2.1.0
 [2.0.0]: https://github.com/nephosolutions/terraform-google-tfe-workspace/releases/tag/v2.0.0
 [1.0.1]: https://github.com/nephosolutions/terraform-google-tfe-workspace/releases/tag/v1.0.1
 [1.0.0]: https://github.com/nephosolutions/terraform-google-tfe-workspace/releases/tag/v1.0.0

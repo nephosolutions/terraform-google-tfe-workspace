@@ -5,19 +5,14 @@ This Terraform module provisions a set of two Google service accounts for Terraf
 A Terraform Workspace service account is used to authenticate the Terraform Cloud workspace to the Google APIs.
 The Google service account key for that account is rotated every 30 days.
 
-The workspace service account has only permissions granted which allows it to impersonate its corresponding runner.
-
-A Terrafrom Runner service account is foreseen to get the necessary permissions on the Google Cloud project resources
-granted. This service account does not have a service account key and must be impersonated.
-
 ## Usage
 
 ```hcl
 module "tfe-workspace-sa" {
   source  = "nephosolutions/tfe-workspace/google//modules/service-account"
-  version = "1.0.0"
+  version = "2.0.0"
 
-  # insert required variables here
+  # insert required variables.tf here
 }
 ```
 
