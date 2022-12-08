@@ -21,7 +21,7 @@ resource "google_service_account_iam_member" "role" {
     "roles/iam.serviceAccountUser",
   ])
 
-  member             = var.tfe_workspace_sa
+  member             = "serviceAccount:${var.tfe_workspace_sa}"
   role               = each.key
   service_account_id = var.service_account_id
 }
