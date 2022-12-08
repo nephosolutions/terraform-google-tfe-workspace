@@ -50,7 +50,6 @@ module "tfe-workspace" {
 | [tfe_variable.google_default_zone](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_variable.google_project_id](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_variable.tfe_organization](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
-| [tfe_variable.tfe_runner_sa](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_variable.tfe_workspace_sa](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_variable.tfe_workspace_sa_key](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_workspace.workspace](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
@@ -78,7 +77,6 @@ module "tfe-workspace" {
 | <a name="input_tag_names"></a> [tag\_names](#input\_tag\_names) | A list of tag names for this workspace. Note that tags must only contain lowercase letters, numbers, colons, or hyphens. | `list(string)` | `[]` | no |
 | <a name="input_terraform_version"></a> [terraform\_version](#input\_terraform\_version) | The version of Terraform to use for this workspace. This can be either an exact version or a version constraint (like `~> 1.0.0`); if you specify a constraint, the workspace will always use the newest release that meets that constraint. | `string` | n/a | yes |
 | <a name="input_tfe_organization_name"></a> [tfe\_organization\_name](#input\_tfe\_organization\_name) | Name of the Terraform Cloud organization. | `string` | n/a | yes |
-| <a name="input_tfe_workspace_sa_key_admins"></a> [tfe\_workspace\_sa\_key\_admins](#input\_tfe\_workspace\_sa\_key\_admins) | List of Terraform workspace service account key admins. | `list(string)` | n/a | yes |
 | <a name="input_tfe_workspace_sa_key_rotation_days"></a> [tfe\_workspace\_sa\_key\_rotation\_days](#input\_tfe\_workspace\_sa\_key\_rotation\_days) | Interval in days to rotate the workspace service account key. | `number` | `30` | no |
 | <a name="input_trigger_patterns"></a> [trigger\_patterns](#input\_trigger\_patterns) | List of glob patterns that describe the files Terraform Cloud monitors for changes. Trigger patterns are always appended to the root directory of the repository. | `list(string)` | `null` | no |
 | <a name="input_trigger_prefixes"></a> [trigger\_prefixes](#input\_trigger\_prefixes) | List of repository-root-relative paths which describe all locations to be tracked for changes. | `list(string)` | `null` | no |
@@ -89,6 +87,5 @@ module "tfe-workspace" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_tfe_runner_sa"></a> [tfe\_runner\_sa](#output\_tfe\_runner\_sa) | The Google Cloud service account for the TFE runner. |
 | <a name="output_tfe_workspace_sa"></a> [tfe\_workspace\_sa](#output\_tfe\_workspace\_sa) | The Google Cloud service account for the TFE workspace. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

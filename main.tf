@@ -17,7 +17,6 @@ module "tfe_workspace_sa" {
 
   google_project_id                  = var.google_project_id
   tfe_workspace_id                   = tfe_workspace.workspace.id
-  tfe_workspace_sa_key_admins        = var.tfe_workspace_sa_key_admins
   tfe_workspace_sa_key_rotation_days = var.tfe_workspace_sa_key_rotation_days
 }
 
@@ -50,14 +49,6 @@ resource "tfe_variable" "tfe_organization" {
   description  = "The name of the organization."
   key          = "tfe_organization"
   value        = var.tfe_organization_name
-  workspace_id = tfe_workspace.workspace.id
-}
-
-resource "tfe_variable" "tfe_runner_sa" {
-  category     = "terraform"
-  description  = "The Google Cloud service account for the TFE runner."
-  key          = "tfe_runner_sa"
-  value        = module.tfe_workspace_sa.tfe_runner_sa
   workspace_id = tfe_workspace.workspace.id
 }
 

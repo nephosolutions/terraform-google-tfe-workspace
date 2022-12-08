@@ -12,11 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-output "tfe_runner_sa" {
-  description = "The Google Cloud service account for the TFE runner."
-  value       = module.tfe_workspace_sa.tfe_runner_sa
-}
-
 output "tfe_workspace_sa" {
   description = "The Google Cloud service account for the TFE workspace."
   value       = module.tfe_workspace_sa.tfe_workspace_sa

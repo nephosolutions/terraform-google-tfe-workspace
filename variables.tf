@@ -13,21 +13,21 @@
 # limitations under the License.
 
 variable "agent_pool_id" {
-  default     = null
   description = "The ID of an agent pool to assign to the workspace."
   type        = string
+  default     = null
 }
 
 variable "allow_destroy_plan" {
   description = "Whether destroy plans can be queued on the workspace."
-  default     = false
   type        = bool
+  default     = false
 }
 
 variable "auto_apply" {
-  default     = false
   description = "Whether to automatically apply changes when a Terraform plan is successful."
   type        = bool
+  default     = false
 }
 
 variable "description" {
@@ -36,9 +36,9 @@ variable "description" {
 }
 
 variable "execution_mode" {
-  default     = "remote"
   description = "Which execution mode to use. When set to `local`, the workspace will be used for state storage only."
   type        = string
+  default     = "remote"
 
   validation {
     condition     = contains(["agent", "local", "remote"], var.execution_mode)
@@ -47,15 +47,15 @@ variable "execution_mode" {
 }
 
 variable "file_triggers_enabled" {
-  default     = false
   description = "Whether to filter runs based on the changed files in a VCS push. If enabled, the working directory and trigger prefixes describe a set of paths which must contain changes for a VCS push to trigger a run. If disabled, any push will trigger a run."
   type        = bool
+  default     = false
 }
 
 variable "global_remote_state" {
-  default     = false
   description = "Whether the workspace allows all workspaces in the organization to access its state data during runs. If false, then only specifically approved workspaces can access its state (`remote_state_consumer_ids`)."
   type        = bool
+  default     = false
 }
 
 variable "google_default_region" {
@@ -79,39 +79,39 @@ variable "name" {
 }
 
 variable "queue_all_runs" {
-  default     = true
   description = "Whether the workspace should start automatically performing runs immediately after its creation."
   type        = bool
+  default     = true
 }
 
 variable "remote_state_consumer_ids" {
-  default     = []
   description = "The set of workspace IDs set as explicit remote state consumers for the given workspace."
   type        = list(string)
+  default     = []
 }
 
 variable "speculative_enabled" {
-  default     = true
   description = "Whether this workspace allows speculative plans.  Setting this to `false` prevents Terraform Cloud or the Terraform Enterprise instance from running plans on pull requests, which can improve security if the VCS repository is public or includes untrusted contributors."
   type        = bool
+  default     = true
 }
 
 variable "ssh_key_id" {
-  default     = null
   description = "The ID of an SSH key to assign to the workspace."
   type        = string
+  default     = null
 }
 
 variable "structured_run_output_enabled" {
-  default     = true
   description = "Whether this workspace should show output from Terraform runs using the enhanced UI when available. Setting this to `false` ensures that all runs in this workspace will display their output as text logs."
   type        = bool
+  default     = true
 }
 
 variable "tag_names" {
-  default     = []
   description = "A list of tag names for this workspace. Note that tags must only contain lowercase letters, numbers, colons, or hyphens."
   type        = list(string)
+  default     = []
 }
 
 variable "terraform_version" {
@@ -124,41 +124,37 @@ variable "tfe_organization_name" {
   type        = string
 }
 
-variable "tfe_workspace_sa_key_admins" {
-  description = "List of Terraform workspace service account key admins."
-  type        = list(string)
-}
-
 variable "tfe_workspace_sa_key_rotation_days" {
-  default     = 30
   description = "Interval in days to rotate the workspace service account key."
   type        = number
+  default     = 30
 }
 
 variable "trigger_patterns" {
-  default     = null
   description = "List of glob patterns that describe the files Terraform Cloud monitors for changes. Trigger patterns are always appended to the root directory of the repository."
   type        = list(string)
+  default     = null
 }
 
 variable "trigger_prefixes" {
-  default     = null
   description = "List of repository-root-relative paths which describe all locations to be tracked for changes."
   type        = list(string)
+  default     = null
 }
 
 variable "vcs_repo" {
-  default     = null
   description = "Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow. Omit this argument to utilize the CLI-driven and API-driven workflows, where runs are not driven by webhooks on your VCS provider."
 
   type = object({
     identifier     = string
     oauth_token_id = string
   })
+
+  default = null
 }
 
 variable "working_directory" {
-  default     = null
   description = "A relative path that Terraform will execute within. Defaults to the root of your repository."
   type        = string
+  default     = null
 }
